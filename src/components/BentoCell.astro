@@ -1,0 +1,17 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 1 } = Astro.props;
+---
+
+<div
+  class:list={[
+    `flex flex-col flex-[${size}] border border-zinc-700 rounded-xl  bg-zinc-900 justify-center`,
+    Astro.props.class,
+  ]}
+>
+  <slot />
+</div>
