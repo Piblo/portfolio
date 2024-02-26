@@ -1,60 +1,98 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import BentoCell from "../components/BentoCell.astro";
+import { Image } from "astro:assets";
+import ArrowRight from "../components/icons/ArrowRight.astro";
+import BentoRow from "../components/BentoRow.astro";
 ---
 
 <MainLayout>
-  <div class="border border-zinc-800 rounded-xl pt-4 p-6 bg-zinc-900">
+  <div class="border border-neutral-800 rounded-xl pt-4 p-6 bg-neutral-900">
     <div class="flex gap-2 mb-4">
       <div class="bg-red-500 w-[12px] h-[12px] rounded-full"></div>
       <div class="bg-yellow-500 w-[12px] h-[12px] rounded-full"></div>
       <div class="bg-green-500 w-[12px] h-[12px] rounded-full"></div>
     </div>
 
-    <div class="flex flex-1 gap-4 h-[240px]">
-      <BentoCell size={2} class="p-6">
-        <h1 class="text-2xl font-bold mb-4 flex items-center">
-          Hola! I'm Pablo <span
-            class="inline-block animate-wiggle-more animate-twice">👋</span
+    <div class="flex flex-col gap-4">
+      <BentoRow class="flex gap-4 h-[240px]">
+        <BentoCell size={2} class="p-6">
+          <h1 class="text-2xl font-bold mb-4 flex items-center">
+            Hola! I'm Pablo <span class="inline-block">👋</span>
+          </h1>
+          <h2 class="text-xl mb-6 text-secondary">
+            Full-stack engineer currently working at <a
+              class="bg-clip-text text-transparent bg-gradient-to-r from-[#7a04dd] to-fuchsia-600 relative after:hover:absolute after:focus:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-[#7a04dd] after:to-fuchsia-600 outline-none font-semibold"
+              href="https://www.justgiving.com"
+              target="_blank"
+              rel="noreferrer"
+              >JustGiving
+            </a>
+          </h2>
+        </BentoCell>
+        <BentoCell withPadding={false}>
+          <div
+            class="h-full scale-105 hover:scale-100 bg-[url(/jg-page-2.jpg)] bg-center bg-cover overflow-hidden cursor-pointer transition-transform"
           >
-        </h1>
-        <h2 class="text-xl mb-6 text-neutral-300">
-          Full-stack engineer currently working at <a
-            class="bg-clip-text text-transparent bg-gradient-to-r from-[#7a04dd] to-fuchsia-600 relative after:hover:absolute after:focus:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-[#7a04dd] after:to-fuchsia-600 outline-none font-semibold"
-            href="https://www.justgiving.com"
-            target="_blank"
-            rel="noreferrer"
-            >JustGiving
-          </a>
-        </h2>
-      </BentoCell>
-      <BentoCell
-        class="bg-[url(/jg-page-2.jpg)] bg-center bg-cover overflow-hidden cursor-pointer"
-      >
-        <div
-          class="group hover:bg-black/70 w-full h-full transition-colors flex items-end p-4"
-        >
-          <h3
-            class="text-xl group-hover:visible group-hover:translate-y-0 translate-y-10 transition-transform"
+            <div
+              class="group hover:bg-black/70 w-full h-full transition-colors flex items-end p-4"
+            >
+              <h3
+                class="text-xl group-hover:visible group-hover:translate-y-0 translate-y-10 transition-transform"
+              >
+                JustGiving
+              </h3>
+            </div>
+          </div>
+        </BentoCell>
+        <BentoCell withPadding={false}>
+          <div
+            class="h-full scale-105 hover:scale-100 bg-[url(/healium.jpg)] bg-center bg-cover overflow-hidden cursor-pointer transition-transform"
           >
-            JustGiving
-          </h3>
-        </div>
-      </BentoCell>
-      <BentoCell
-        class="bg-[url(/healium.jpg)] bg-center bg-cover overflow-hidden cursor-pointer"
-      >
-        <div
-          class="group hover:bg-black/70 w-full h-full transition-colors flex items-end p-4"
-        >
-          <h3
-            class="text-xl group-hover:visible group-hover:translate-y-0 translate-y-10 transition-transform"
+            <div
+              class="group hover:bg-black/70 w-full h-full transition-colors flex items-end p-4"
+            >
+              <h3
+                class="text-xl group-hover:visible group-hover:translate-y-0 translate-y-10 transition-transform"
+              >
+                Healium
+              </h3>
+            </div>
+          </div>
+        </BentoCell>
+      </BentoRow>
+      <BentoRow class="flex gap-4 h-[240px]">
+        <BentoCell size="auto" withPadding={false}
+          ><Image
+            src="/me.webp"
+            width="240"
+            height="240"
+            alt=""
+            class="h-full object-cover"
+          />
+        </BentoCell>
+        <BentoCell title="Experience">
+          <div class="flex-1 mt-8">
+            <h3 class="text-xl font-bold mb-2">JustGiving</h3>
+            <p class="text-secondary mb-1">Principal software engineer</p>
+            <div class="flex gap-1 items-center">
+              2019 <ArrowRight class="h-4" /> Current
+            </div>
+          </div>
+          <div
+            class="rounded-full bg-neutral-800 mb-2 w-fit p-2 px-6 flex gap-4 self-center"
           >
-            Healium
-          </h3>
-        </div>
-      </BentoCell>
+            <div class="w-[6px] h-[6px] bg-neutral-100 rounded-full"></div>
+            <div class="w-[6px] h-[6px] bg-neutral-100/30 rounded-full"></div>
+            <div class="w-[6px] h-[6px] bg-neutral-100/30 rounded-full"></div>
+          </div>
+        </BentoCell>
+        <BentoCell title="Tech stack" />
+      </BentoRow>
+      <BentoRow>
+        <BentoCell title="Contact" />
+        <BentoCell title="About me" size={2} />
+      </BentoRow>
     </div>
-    <div></div>
   </div>
 </MainLayout>

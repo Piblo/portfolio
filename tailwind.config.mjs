@@ -11,6 +11,10 @@ export default {
       container: {
         center: true,
       },
+      textColor: {
+        secondary: "#a3a3a3",
+        tertiary: "#737373",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

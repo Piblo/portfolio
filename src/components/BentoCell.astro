@@ -1,17 +1,39 @@
 ---
 interface Props {
-  size?: number;
+  size?: number | "auto";
   class?: string;
+  withPadding?: boolean;
+  title?: string;
 }
 
-const { size = 1 } = Astro.props;
+const { size = 1, withPadding = true, title } = Astro.props;
 ---
 
 <div
-  class:list={[
-    `flex flex-col flex-[${size}] border border-zinc-700 rounded-xl  bg-zinc-900 justify-center`,
-    Astro.props.class,
-  ]}
+  class:list={[`flex relative p-[1px] overflow-hidden rounded-xl`]}
+  style={{ flex: size === "auto" ? "0 0 auto" : size }}
 >
-  <slot />
+  <div class="absolute -inset-0 radial-gradient rounded-xl"></div>
+  <div
+    class:list={[
+      "bg-neutral-900 relative rounded-xl w-full",
+      { "p-6": withPadding },
+      Astro.props.class,
+    ]}
+  >
+    {
+      title && (
+        <h3 class="text-tertiary uppercase text-sm font-semibold">{title}</h3>
+      )
+    }
+    <div class="flex flex-col h-full">
+      <slot />
+    </div>
+  </div>
 </div>
+
+<style>
+  .radial-gradient {
+    background: radial-gradient(circle, #525252 0%, #262626 100%);
+  }
+</style>
