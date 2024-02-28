@@ -73,7 +73,7 @@ import { Carousel } from "../components/Carousel.tsx";
           />
         </BentoCell>
         <BentoCell title="Experience" class="relative">
-          <Carousel client:idle itemCount={2} className="mt-8">
+          <Carousel client:idle itemCount={3} className="mt-8">
             <Carousel.Item>
               <h3 class="text-xl font-bold mb-2">JustGiving</h3>
               <p class="text-secondary mb-1">Principal software engineer</p>
@@ -86,6 +86,13 @@ import { Carousel } from "../components/Carousel.tsx";
               <p class="text-secondary mb-1">Lead front-end engineer</p>
               <div class="flex gap-1 items-center">
                 2015 <ArrowRight class="h-4" /> 2019
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <h3 class="text-xl font-bold mb-2">IRIS Software Group</h3>
+              <p class="text-secondary mb-1">Software engineer</p>
+              <div class="flex gap-1 items-center">
+                2013 <ArrowRight class="h-4" /> 2015
               </div>
             </Carousel.Item>
           </Carousel>

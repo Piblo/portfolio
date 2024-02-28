@@ -11,17 +11,19 @@ type CarouselProps = {
 export const Carousel = ({ children, itemCount, className }: CarouselProps) => {
   const [x, setX] = useState<number>(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const SWIPE_DELTA_MIN = 150;
 
   const handlers = useSwipeable({
-    onSwiping: ({ absX, deltaX }) => {
+    onSwiping: ({ deltaX }) => {
       setX(deltaX);
     },
-    onSwipedLeft: () => {
-      console.log("swiped left");
-      setActiveIndex((current) => current + 1);
+    onSwipedLeft: ({ deltaX }) => {
+      if (Math.abs(deltaX) < SWIPE_DELTA_MIN) return;
+      setActiveIndex((current) => Math.min(current + 1, itemCount - 1));
     },
-    onSwipedRight: () => {
-      setActiveIndex((current) => current - 1);
+    onSwipedRight: ({ deltaX }) => {
+      if (Math.abs(deltaX) < SWIPE_DELTA_MIN) return;
+      setActiveIndex((current) => Math.max(current - 1, 0));
     },
     onSwiped: () => {
       setX(0);
@@ -44,13 +46,14 @@ export const Carousel = ({ children, itemCount, className }: CarouselProps) => {
         {Array(itemCount)
           .fill("")
           .map((item, index) => (
-            <div
+            <button
               key={index}
+              onClick={() => setActiveIndex(index)}
               className={clsx("w-[6px] h-[6px]  rounded-full", {
                 "bg-neutral-100": index === activeIndex,
                 "bg-neutral-100/30": index !== activeIndex,
               })}
-            ></div>
+            ></button>
           ))}
       </div>
     </div>
