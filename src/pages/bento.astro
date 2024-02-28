@@ -4,6 +4,7 @@ import BentoCell from "../components/BentoCell.astro";
 import { Image } from "astro:assets";
 import ArrowRight from "../components/icons/ArrowRight.astro";
 import BentoRow from "../components/BentoRow.astro";
+import { Carousel } from "../components/Carousel.tsx";
 ---
 
 <MainLayout>
@@ -71,23 +72,25 @@ import BentoRow from "../components/BentoRow.astro";
             class="h-full object-cover"
           />
         </BentoCell>
-        <BentoCell title="Experience">
-          <div class="flex-1 mt-8">
-            <h3 class="text-xl font-bold mb-2">JustGiving</h3>
-            <p class="text-secondary mb-1">Principal software engineer</p>
-            <div class="flex gap-1 items-center">
-              2019 <ArrowRight class="h-4" /> Current
-            </div>
-          </div>
-          <div
-            class="rounded-full bg-neutral-800 mb-2 w-fit p-2 px-6 flex gap-4 self-center"
-          >
-            <div class="w-[6px] h-[6px] bg-neutral-100 rounded-full"></div>
-            <div class="w-[6px] h-[6px] bg-neutral-100/30 rounded-full"></div>
-            <div class="w-[6px] h-[6px] bg-neutral-100/30 rounded-full"></div>
-          </div>
+        <BentoCell title="Experience" class="relative">
+          <Carousel client:idle itemCount={2} className="mt-8">
+            <Carousel.Item>
+              <h3 class="text-xl font-bold mb-2">JustGiving</h3>
+              <p class="text-secondary mb-1">Principal software engineer</p>
+              <div class="flex gap-1 items-center">
+                2019 <ArrowRight class="h-4" /> Current
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <h3 class="text-xl font-bold mb-2">KPMG</h3>
+              <p class="text-secondary mb-1">Lead front-end engineer</p>
+              <div class="flex gap-1 items-center">
+                2015 <ArrowRight class="h-4" /> 2019
+              </div>
+            </Carousel.Item>
+          </Carousel>
         </BentoCell>
-        <BentoCell title="Tech stack" />
+        <BentoCell title="Tech stack" size={2} />
       </BentoRow>
       <BentoRow>
         <BentoCell title="Contact" />
