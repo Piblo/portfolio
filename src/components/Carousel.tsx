@@ -29,6 +29,9 @@ export const Carousel = ({ children, itemCount, className }: CarouselProps) => {
       setX(0);
     },
     trackMouse: true,
+    touchEventOptions: {
+      passive: true,
+    },
   });
 
   return (
